@@ -1,0 +1,502 @@
+[
+  {
+    "id": "c1",
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "Comfort",
+    "basePrice": 23500,
+    "status": "available"
+  },
+  {
+    "id": "c2",
+    "make": "Toyota",
+    "model": "RAV4",
+    "year": 2025,
+    "engine": "petrol",
+    "trim": "Active",
+    "basePrice": 34500,
+    "status": "available"
+  },
+  {
+    "id": "c3",
+    "make": "VW",
+    "model": "ID.3",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "Pro",
+    "basePrice": 39900,
+    "status": "available"
+  },
+  {
+    "id": "c4",
+    "make": "VW",
+    "model": "Golf",
+    "year": 2024,
+    "engine": "diesel",
+    "trim": "Highline",
+    "basePrice": 28900,
+    "status": "available"
+  },
+  {
+    "id": "c5",
+    "make": "VW",
+    "model": "Tiguan",
+    "year": 2025,
+    "engine": "petrol",
+    "trim": "R-Line",
+    "basePrice": 42000,
+    "status": "available"
+  },
+  {
+    "id": "c6",
+    "make": "BMW",
+    "model": "3 Series",
+    "year": 2024,
+    "engine": "diesel",
+    "trim": "M Sport",
+    "basePrice": 48500,
+    "status": "available"
+  },
+  {
+    "id": "c7",
+    "make": "BMW",
+    "model": "iX3",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "M Sport",
+    "basePrice": 65000,
+    "status": "available"
+  },
+  {
+    "id": "c8",
+    "make": "BMW",
+    "model": "X5",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "xDrive45e",
+    "basePrice": 78000,
+    "status": "sold"
+  },
+  {
+    "id": "c9",
+    "make": "Mercedes",
+    "model": "C-Class",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "AMG Line",
+    "basePrice": 52000,
+    "status": "available"
+  },
+  {
+    "id": "c10",
+    "make": "Mercedes",
+    "model": "EQE",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "AMG Line",
+    "basePrice": 72000,
+    "status": "available"
+  },
+  {
+    "id": "c11",
+    "make": "Audi",
+    "model": "A4",
+    "year": 2024,
+    "engine": "diesel",
+    "trim": "S Line",
+    "basePrice": 45000,
+    "status": "available"
+  },
+  {
+    "id": "c12",
+    "make": "Audi",
+    "model": "Q4 e-tron",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "S Line",
+    "basePrice": 54000,
+    "status": "available"
+  },
+  {
+    "id": "c13",
+    "make": "Audi",
+    "model": "A6",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "S Line",
+    "basePrice": 62000,
+    "status": "available"
+  },
+  {
+    "id": "c14",
+    "make": "Ford",
+    "model": "Mustang Mach-E",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "GT",
+    "basePrice": 68000,
+    "status": "available"
+  },
+  {
+    "id": "c15",
+    "make": "Ford",
+    "model": "Focus",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "ST-Line",
+    "basePrice": 26000,
+    "status": "available"
+  },
+  {
+    "id": "c16",
+    "make": "Ford",
+    "model": "Kuga",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "Titanium",
+    "basePrice": 35500,
+    "status": "sold"
+  },
+  {
+    "id": "c17",
+    "make": "Hyundai",
+    "model": "Ioniq 5",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "Ultimate",
+    "basePrice": 51000,
+    "status": "available"
+  },
+  {
+    "id": "c18",
+    "make": "Hyundai",
+    "model": "Tucson",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "N Line",
+    "basePrice": 38000,
+    "status": "available"
+  },
+  {
+    "id": "c19",
+    "make": "Hyundai",
+    "model": "i30",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "N Line",
+    "basePrice": 27500,
+    "status": "available"
+  },
+  {
+    "id": "c20",
+    "make": "Kia",
+    "model": "EV6",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "GT-Line",
+    "basePrice": 53000,
+    "status": "available"
+  },
+  {
+    "id": "c21",
+    "make": "Kia",
+    "model": "Sportage",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "GT-Line",
+    "basePrice": 39500,
+    "status": "available"
+  },
+  {
+    "id": "c22",
+    "make": "Kia",
+    "model": "Ceed",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "GT-Line",
+    "basePrice": 25000,
+    "status": "available"
+  },
+  {
+    "id": "c23",
+    "make": "Mazda",
+    "model": "CX-60",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "Takumi",
+    "basePrice": 47000,
+    "status": "available"
+  },
+  {
+    "id": "c24",
+    "make": "Mazda",
+    "model": "3",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "GT Sport",
+    "basePrice": 29000,
+    "status": "available"
+  },
+  {
+    "id": "c25",
+    "make": "Mazda",
+    "model": "MX-30",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "GT Sport",
+    "basePrice": 36000,
+    "status": "sold"
+  },
+  {
+    "id": "c26",
+    "make": "Nissan",
+    "model": "Ariya",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "e-4ORCE",
+    "basePrice": 59000,
+    "status": "available"
+  },
+  {
+    "id": "c27",
+    "make": "Nissan",
+    "model": "Qashqai",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "Tekna",
+    "basePrice": 37000,
+    "status": "available"
+  },
+  {
+    "id": "c28",
+    "make": "Nissan",
+    "model": "Juke",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "N-Connecta",
+    "basePrice": 24500,
+    "status": "available"
+  },
+  {
+    "id": "c29",
+    "make": "Peugeot",
+    "model": "e-2008",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "GT",
+    "basePrice": 41000,
+    "status": "available"
+  },
+  {
+    "id": "c30",
+    "make": "Peugeot",
+    "model": "3008",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "GT",
+    "basePrice": 44000,
+    "status": "available"
+  },
+  {
+    "id": "c31",
+    "make": "Peugeot",
+    "model": "308",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "Allure",
+    "basePrice": 28000,
+    "status": "available"
+  },
+  {
+    "id": "c32",
+    "make": "Renault",
+    "model": "Megane E-Tech",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "Iconic",
+    "basePrice": 42500,
+    "status": "available"
+  },
+  {
+    "id": "c33",
+    "make": "Renault",
+    "model": "Arkana",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "R.S. Line",
+    "basePrice": 33000,
+    "status": "available"
+  },
+  {
+    "id": "c34",
+    "make": "Renault",
+    "model": "Clio",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "Techno",
+    "basePrice": 21000,
+    "status": "available"
+  },
+  {
+    "id": "c35",
+    "make": "Skoda",
+    "model": "Enyaq iV",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "Sportline",
+    "basePrice": 48000,
+    "status": "sold"
+  },
+  {
+    "id": "c36",
+    "make": "Skoda",
+    "model": "Octavia",
+    "year": 2024,
+    "engine": "diesel",
+    "trim": "L&K",
+    "basePrice": 32000,
+    "status": "available"
+  },
+  {
+    "id": "c37",
+    "make": "Skoda",
+    "model": "Kodiaq",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "Sportline",
+    "basePrice": 39000,
+    "status": "sold"
+  },
+  {
+    "id": "c38",
+    "make": "Volvo",
+    "model": "XC40 Recharge",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "Ultimate",
+    "basePrice": 62000,
+    "status": "available"
+  },
+  {
+    "id": "c39",
+    "make": "Volvo",
+    "model": "XC60",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "Inscription",
+    "basePrice": 67000,
+    "status": "available"
+  },
+  {
+    "id": "c40",
+    "make": "Volvo",
+    "model": "S60",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "R-Design",
+    "basePrice": 49000,
+    "status": "available"
+  },
+  {
+    "id": "c41",
+    "make": "Tesla",
+    "model": "Model 3",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "Long Range",
+    "basePrice": 56000,
+    "status": "sold"
+  },
+  {
+    "id": "c42",
+    "make": "Tesla",
+    "model": "Model Y",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "Performance",
+    "basePrice": 68000,
+    "status": "available"
+  },
+  {
+    "id": "c43",
+    "make": "Tesla",
+    "model": "Model S",
+    "year": 2024,
+    "engine": "ev",
+    "trim": "Plaid",
+    "basePrice": 98000,
+    "status": "sold"
+  },
+  {
+    "id": "c44",
+    "make": "Porsche",
+    "model": "Taycan",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "4S",
+    "basePrice": 105000,
+    "status": "sold"
+  },
+  {
+    "id": "c45",
+    "make": "Porsche",
+    "model": "Cayenne",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "E-Hybrid",
+    "basePrice": 92000,
+    "status": "available"
+  },
+  {
+    "id": "c46",
+    "make": "Honda",
+    "model": "CR-V",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "Sport",
+    "basePrice": 41000,
+    "status": "available"
+  },
+  {
+    "id": "c47",
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "Sport",
+    "basePrice": 29500,
+    "status": "available"
+  },
+  {
+    "id": "c48",
+    "make": "Dacia",
+    "model": "Spring",
+    "year": 2025,
+    "engine": "ev",
+    "trim": "Comfort Plus",
+    "basePrice": 18500,
+    "status": "sold"
+  },
+  {
+    "id": "c49",
+    "make": "Dacia",
+    "model": "Duster",
+    "year": 2024,
+    "engine": "petrol",
+    "trim": "Journey",
+    "basePrice": 22000,
+    "status": "available"
+  },
+  {
+    "id": "c50",
+    "make": "Dacia",
+    "model": "Jogger",
+    "year": 2024,
+    "engine": "hybrid",
+    "trim": "Extreme",
+    "basePrice": 26500,
+    "status": "available"
+  }
+]

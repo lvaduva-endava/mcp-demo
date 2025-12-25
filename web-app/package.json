@@ -1,0 +1,36 @@
+{
+  "name": "dealer-chat",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.21.0",
+    "dotenv": "^17.2.3",
+    "openai": "^4.0.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-markdown": "^10.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@types/node": "^24.6.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "babel-plugin-react-compiler": "^19.1.0-rc.3",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.22",
+    "globals": "^16.4.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.45.0",
+    "vite": "^7.1.7"
+  },
+  "packageManager": "npm@11.6.1+sha512.ee20d21c3a2ea7ab8c409dfbc96ae17ea71b3211745047c645aa7a36ff9a29072b2095e50a2d9c29b8fbe5606688795cc2c402cbf534cc4c0365d031e87fd56b"
+}

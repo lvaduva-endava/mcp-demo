@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+/dist/
+/build/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Test/coverage output
+coverage/
+.nyc_output/
+
+# Tooling caches
+.eslintcache
+
+# Repo-specific generated/temp artifacts
+/generated/
+/temp/
+
+# Editor/OS files
+.DS_Store
+.vscode/
+.idea/

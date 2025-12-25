@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Node/TypeScript artifacts
+**/node_modules/
+**/dist/
+**/dist-ssr/
+**/build/
+**/*.tsbuildinfo
+
+# Coverage output
+**/coverage/
+**/.nyc_output/
+
+# Common tool caches
+**/.eslintcache
+**/.vite/
+**/.turbo/

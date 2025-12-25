@@ -1,0 +1,28 @@
+{
+  "name": "agent-runtime",
+  "version": "1.0.0",
+  "description": "Node agent runtime server that consumes MCP and exposes a chat API",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "PORT=8787 tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.21.0",
+    "@openai/agents": "^0.3.7",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "npm@11.6.1+sha512.ee20d21c3a2ea7ab8c409dfbc96ae17ea71b3211745047c645aa7a36ff9a29072b2095e50a2d9c29b8fbe5606688795cc2c402cbf534cc4c0365d031e87fd56b"
+}
