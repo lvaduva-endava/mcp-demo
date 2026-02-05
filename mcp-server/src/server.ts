@@ -113,6 +113,12 @@ server.tool(
     const filtered = showSold ? cars : cars.filter(c => c.status === "available");
     const enriched = filtered.map((c) => ({ ...c, uri: `car://${c.id}` }));
     const result = { count: enriched.length, cars: enriched };
+    /**
+     * MCP standardizes: 
+     * A tool response is a list of typed content blocks
+     * Each block has a type (text, json, resource, error)
+     * Cient and model agree on this structure
+     */
     return {
       content: [{ type: "text" as const, text: JSON.stringify(result, null, 2) }],
       structuredContent: result,
