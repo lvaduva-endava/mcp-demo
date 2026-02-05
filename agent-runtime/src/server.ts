@@ -10,11 +10,7 @@ import {
   extractAllTextOutput,
   run,
   setDefaultOpenAIKey,
-  tool,
 } from '@openai/agents';
-import { Client } from '@modelcontextprotocol/sdk/client/index.js';
-import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
-import { z } from 'zod';
 
 import { AGENT_INSTRUCTIONS, HISTORY_PROMPT_PREAMBLE_LINES } from './server-utils.js';
 
@@ -38,7 +34,7 @@ type ChatSession = {
 const PORT = parseInt(process.env.PORT || '8787', 10);
 const MCP_SERVER_URL = process.env.MCP_SERVER_URL || process.env.VITE_MCP_SERVER_URL || 'http://localhost:4000/mcp';
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || process.env.VITE_OPENAI_API_KEY || '';
-const MODEL = process.env.OPENAI_MODEL || 'gpt-4.1-mini';
+const MODEL = process.env.OPENAI_MODEL || 'gpt-5-mini';
 
 const SESSION_HISTORY_LIMIT = 24;
 
@@ -65,53 +61,6 @@ let sharedMcpServer: MCPServerStreamableHttp | null = null;
 let isMcpServerConnected = false;
 
 let sharedAgent: Agent | null = null;
-
-let sharedMcpClient: Client | null = null;
-let isMcpClientConnected = false;
-
-// =============================================================================
-// MCP client (direct calls for resources/prompts bridge tools)
-// =============================================================================
-
-async function ensureMcpClient(): Promise<Client> {
-  if (!sharedMcpClient) {
-    sharedMcpClient = new Client({ name: 'agent-runtime', version: '0.1.0' });
-  }
-
-  if (!isMcpClientConnected) {
-    const transport = new StreamableHTTPClientTransport(new URL(MCP_SERVER_URL), {
-      // Some MCP servers/SDKs require both JSON + SSE tokens in Accept, even when replying with JSON.
-      requestInit: { headers: { Accept: 'application/json, text/event-stream' } },
-      // Presentation-friendly: server may return 405 on GET SSE, which the SDK treats as expected.
-      reconnectionOptions: {
-        initialReconnectionDelay: 500,
-        maxReconnectionDelay: 2000,
-        reconnectionDelayGrowFactor: 1.5,
-        maxRetries: 0,
-      },
-    });
-
-    await sharedMcpClient.connect(transport);
-    isMcpClientConnected = true;
-  }
-
-  return sharedMcpClient;
-}
-
-function resourceReadResultToText(result: any): string {
-  const contents: any[] = Array.isArray(result?.contents) ? result.contents : [];
-  if (contents.length === 0) return JSON.stringify(result, null, 2);
-
-  const chunks = contents
-    .map((item) => {
-      if (typeof item?.text === 'string') return item.text;
-      if (typeof item?.blob === 'string') return item.blob;
-      return JSON.stringify(item, null, 2);
-    })
-    .filter((s) => typeof s === 'string' && s.trim().length > 0);
-
-  return chunks.join('\n\n');
-}
 
 function getOrCreateSession(sessionId?: string): ChatSession {
   const id = sessionId && typeof sessionId === 'string' ? sessionId : crypto.randomUUID();
@@ -154,52 +103,6 @@ function appendToSessionHistory(session: ChatSession, message: ChatMessage) {
   session.updatedAt = Date.now();
 }
 
-// =============================================================================
-// Bridge tools: MCP resources + prompts (explicitly callable by the agent)
-// =============================================================================
-
-const mcpReadResourceTool = tool({
-  name: 'mcp_read_resource',
-  description: 'Read an MCP resource by URI (e.g., dealer://info) and return its content as text.',
-  parameters: z.object({
-    uri: z.string().describe('Resource URI to read (e.g., dealer://info)'),
-  }),
-  execute: async ({ uri }) => {
-    const client = await ensureMcpClient();
-    const result = await client.readResource({ uri });
-    return resourceReadResultToText(result);
-  },
-});
-
-const mcpGetPromptTool = tool({
-  name: 'mcp_get_prompt',
-  description: 'Fetch an MCP prompt template by name and optional arguments. Returns structured messages.',
-  parameters: z.object({
-    name: z.string().describe('Prompt name (e.g., sales-quotation)'),
-    arguments: z
-      .record(z.string())
-      .optional()
-      .describe('Prompt arguments as string values (shape depends on the prompt).'),
-  }),
-  execute: async ({ name, arguments: promptArgs }) => {
-    const client = await ensureMcpClient();
-
-    const args: Record<string, string> = {};
-    if (promptArgs) {
-      for (const [key, value] of Object.entries(promptArgs)) {
-        if (typeof value === 'string') args[key] = value;
-        else args[key] = String(value);
-      }
-    }
-
-    const result = await client.getPrompt({
-      name,
-      ...(Object.keys(args).length ? { arguments: args } : {}),
-    });
-    return result;
-  },
-});
-
 async function ensureAgent(): Promise<{ agent: Agent; mcpServer: MCPServerStreamableHttp }> {
   if (!sharedMcpServer) {
     sharedMcpServer = new MCPServerStreamableHttp({ url: MCP_SERVER_URL });
@@ -208,10 +111,10 @@ async function ensureAgent(): Promise<{ agent: Agent; mcpServer: MCPServerStream
   if (!sharedAgent) {
     sharedAgent = new Agent({
       name: 'Dealer Assistant',
-      instructions: AGENT_INSTRUCTIONS,
+      // instructions: AGENT_INSTRUCTIONS,
       model: MODEL,
       mcpServers: [sharedMcpServer],
-      tools: [mcpReadResourceTool, mcpGetPromptTool],
+      tools: [],
     });
   }
 
@@ -308,14 +211,6 @@ async function shutdown(): Promise<void> {
   try {
     if (sharedMcpServer && isMcpServerConnected) {
       await sharedMcpServer.close();
-    }
-  } catch {
-    // ignore
-  }
-
-  try {
-    if (sharedMcpClient && isMcpClientConnected) {
-      await sharedMcpClient.close();
     }
   } catch {
     // ignore

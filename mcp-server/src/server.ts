@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import { z } from "zod";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { cars, findCar, updateCarStatus } from "./data/cars.js";
 import { createOrder, orders } from "./data/orders.js";
@@ -12,7 +13,7 @@ const server = new McpServer({
   version: "0.1.0",
 });
 
-// Express app + HTTP transport
+// Express app (typical Node.js Web Server) + HTTP transport
 const app = express();
 app.use(express.json());
 
@@ -287,6 +288,57 @@ server.resource(
       contents: [
         {
           uri: "dealer://info",
+          text: JSON.stringify(payload, null, 2),
+          mimeType: "application/json",
+        },
+      ],
+    };
+  }
+);
+
+// Resource Template: Car details by URI
+// URI pattern: car://{carId}
+// This makes the `uri: car://...` fields returned by tools resolvable via readResource.
+server.resource(
+  "car",
+  new ResourceTemplate("car://{carId}", {
+    // Enumerate available resource instances for discovery in MCP Inspector / clients.
+    list: async () => {
+      return {
+        resources: cars.map((c) => ({
+          uri: `car://${c.id}`,
+          name: `car-${c.id}`,
+          description: `${c.year} ${c.make} ${c.model}${c.trim ? " " + c.trim : ""} (${c.engine}) — ${c.status}`,
+          mimeType: "application/json",
+        })),
+      };
+    },
+    // Autocomplete car IDs for clients that support template completion.
+    complete: {
+      carId: async (value) => {
+        const prefix = (value || "").toLowerCase();
+        return cars
+          .map((c) => c.id)
+          .filter((id) => id.toLowerCase().startsWith(prefix))
+          .slice(0, 50);
+      },
+    },
+  }),
+  {
+    title: "Car Details",
+    description: "Read the authoritative record for a specific car by URI (e.g., car://c1).",
+    mimeType: "application/json",
+  },
+  async (_uri, variables) => {
+    const carId = typeof (variables as any)?.carId === "string" ? (variables as any).carId : "";
+    const car = carId ? findCar(carId) : undefined;
+    if (!car) throw new Error("Car not found");
+
+    const payload = { ...car, uri: `car://${car.id}` };
+    return {
+      contents: [
+        {
+          uri: `car://${car.id}`,
           text: JSON.stringify(payload, null, 2),
           mimeType: "application/json",
         },

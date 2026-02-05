@@ -7,10 +7,7 @@ interface Props {
 }
 
 const suggestions = [
-  'Show me all available electric cars',
-  'What Toyota vehicles do you have in stock?',
-  'I want a quote for a BMW with 15% discount',
-  'Tell me about your dealership'
+  'Show me all available MCP features'
 ];
 
 export default function ChatInput({ onSend, disabled }: Props) {

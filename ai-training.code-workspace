@@ -4,5 +4,15 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"mcp": {
+			"servers": {
+				"Car MCP server": {
+					"url": "http://localhost:4000/mcp",
+					"type": "http"
+				}
+			},
+			"inputs": []
+		}
+	}
 }

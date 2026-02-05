@@ -77,7 +77,7 @@
     "engine": "hybrid",
     "trim": "xDrive45e",
     "basePrice": 78000,
-    "status": "sold"
+    "status": "available"
   },
   {
     "id": "c9",
@@ -157,7 +157,7 @@
     "engine": "hybrid",
     "trim": "Titanium",
     "basePrice": 35500,
-    "status": "sold"
+    "status": "available"
   },
   {
     "id": "c17",
@@ -247,7 +247,7 @@
     "engine": "ev",
     "trim": "GT Sport",
     "basePrice": 36000,
-    "status": "sold"
+    "status": "available"
   },
   {
     "id": "c26",
@@ -347,7 +347,7 @@
     "engine": "ev",
     "trim": "Sportline",
     "basePrice": 48000,
-    "status": "sold"
+    "status": "available"
   },
   {
     "id": "c36",
@@ -367,7 +367,7 @@
     "engine": "petrol",
     "trim": "Sportline",
     "basePrice": 39000,
-    "status": "sold"
+    "status": "available"
   },
   {
     "id": "c38",
@@ -407,7 +407,7 @@
     "engine": "ev",
     "trim": "Long Range",
     "basePrice": 56000,
-    "status": "sold"
+    "status": "available"
   },
   {
     "id": "c42",
@@ -427,7 +427,7 @@
     "engine": "ev",
     "trim": "Plaid",
     "basePrice": 98000,
-    "status": "sold"
+    "status": "available"
   },
   {
     "id": "c44",
@@ -437,7 +437,7 @@
     "engine": "ev",
     "trim": "4S",
     "basePrice": 105000,
-    "status": "sold"
+    "status": "available"
   },
   {
     "id": "c45",
@@ -477,7 +477,7 @@
     "engine": "ev",
     "trim": "Comfort Plus",
     "basePrice": 18500,
-    "status": "sold"
+    "status": "available"
   },
   {
     "id": "c49",

@@ -8,7 +8,7 @@ import type { ChatMessage } from '../types';
 // Constants (minimal; demo-friendly)
 // =============================================================================
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY || '';
-const OPENAI_MODEL = 'gpt-4.1-mini';
+const OPENAI_MODEL = 'gpt-5-mini';
 
 // Your public MCP endpoint (e.g. cloudflared URL + /mcp)
 const REMOTE_MCP_SERVER_URL = import.meta.env.VITE_REMOTE_MCP_SERVER_URL || '';
@@ -103,12 +103,11 @@ export function useChatRemoteMCP(options?: { enabled?: boolean }) {
             ...messages.map((m) => ({ role: m.role, content: m.content })),
             { role: 'user', content: userMessage },
           ],
-          // The OpenAI SDK types may not yet include MCP tool typing; keep this demo-friendly.
           tools: [
             {
               type: 'mcp',
               server_label: REMOTE_MCP_SERVER_LABEL,
-              server_description: 'Remote MCP server (tunneled for demo).',
+              server_description: 'Remote MCP server - tunneled via Cloudflare to local MCP instance',
               server_url: REMOTE_MCP_SERVER_URL,
               require_approval: 'never',
             },

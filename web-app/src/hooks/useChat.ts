@@ -12,7 +12,7 @@ import { LOCAL_CHAT_SYSTEM_PROMPT } from './hooks-utils';
 const MCP_SERVER_URL = import.meta.env.VITE_MCP_SERVER_URL || 'http://localhost:4000/mcp';
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY || '';
 
-const OPENAI_MODEL = 'gpt-4.1-mini';
+const OPENAI_MODEL = 'gpt-5-mini';
 const MAX_OUTPUT_TOKENS = 1024;
 const MAX_TOOL_ITERATIONS = 8;
 
