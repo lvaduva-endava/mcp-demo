@@ -42,6 +42,57 @@ npm run dev
 
 Open the Vite URL (typically `http://localhost:5173`).
 
+## Remote MCP mode (make localhost publicly reachable via Cloudflare Tunnel)
+
+Some demos are easier if OpenAI can reach your MCP server over a **public HTTPS URL**. A quick way to do this for a workshop is Cloudflare Tunnel.
+
+### 0) Install `cloudflared` (macOS)
+
+```bash
+brew install cloudflare/cloudflare/cloudflared
+```
+
+### 1) Start the MCP server locally
+
+```bash
+cd mcp-server
+npm run dev
+```
+
+Expected local endpoint: `http://localhost:4000/mcp`.
+
+### 2) Create a public URL that forwards to localhost
+
+In a separate terminal:
+
+```bash
+cloudflared tunnel --url http://localhost:4000
+```
+
+`cloudflared` will print a public URL like `https://<random>.trycloudflare.com`.
+
+Your public MCP endpoint is:
+
+`https://<random>.trycloudflare.com/mcp`
+
+### 3) Update web-app env vars for Remote MCP
+
+Set these in `web-app/.env.local`:
+
+```env
+# Still required (browser calls OpenAI)
+VITE_OPENAI_API_KEY=sk-your-key-here
+
+# Used by the “Remote MCP” chat mode
+VITE_REMOTE_MCP_SERVER_URL=https://<random>.trycloudflare.com/mcp
+VITE_REMOTE_MCP_SERVER_LABEL=dealer-mcp
+```
+
+Then switch the UI to the “Remote MCP” mode (the mode selector lives in `web-app/src/App.tsx`).
+
+### Safety note
+This exposes your local demo server to the internet. Use only for workshop/demo data, and shut down the tunnel when finished.
+
 ## What to demo (5–8 minutes)
 
 A deterministic live flow you can follow:
@@ -100,6 +151,8 @@ Default URL: `http://localhost:8787`
 - **Reset demo state**:
   - set `mcp-server/src/data/orders.json` to `[]`
   - reset sold cars in `mcp-server/src/data/cars.json` back to `"available"`
+
+- **Remote MCP can’t connect**: ensure you set `VITE_REMOTE_MCP_SERVER_URL` to the public URL **including** `/mcp`, and that the tunnel is still running.
 
 More notes: `mcp-server/docs/mcp-demo/90-troubleshooting.md`.
 
